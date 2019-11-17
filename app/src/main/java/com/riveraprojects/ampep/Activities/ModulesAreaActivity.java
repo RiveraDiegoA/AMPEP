@@ -20,6 +20,7 @@ import com.riveraprojects.ampep.Activities.Modules.Module_01.M1AppointmentActivi
 import com.riveraprojects.ampep.Activities.Modules.Module_02.M2ProcessActivity;
 import com.riveraprojects.ampep.Activities.Modules.Module_03.M3ListActivity;
 import com.riveraprojects.ampep.Activities.Modules.Module_03.M3OptionsActivity;
+import com.riveraprojects.ampep.Activities.Test.TestActivity;
 import com.riveraprojects.ampep.R;
 
 public class ModulesAreaActivity extends AppCompatActivity implements View.OnClickListener {
@@ -90,7 +91,7 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
         Activity activity = null;
         switch (module) {
             case "M1":
-                activity = new M1AppointmentActivity();
+                activity = new TestActivity();
                 break;
             case "M2":
                 activity = new M2ProcessActivity();

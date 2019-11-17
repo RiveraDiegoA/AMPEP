@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.riveraprojects.ampep.Activities.Test.TestActivity;
 import com.riveraprojects.ampep.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -94,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     .apply();
 
             goModuleActivity();
+            //goTestActivity();
         } else {
             al_edt_user.requestFocus();
             Toast.makeText(LoginActivity.this, "Usuario o contraseña Incorrecto", Toast.LENGTH_SHORT).show();
@@ -121,6 +123,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void goModuleActivity() {
         startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class));
+    }
+
+    private void goTestActivity() {
+        startActivity(new Intent(getApplicationContext(), TestActivity.class));
     }
 
     private void goStartupActivity() {

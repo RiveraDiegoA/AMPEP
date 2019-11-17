@@ -17,7 +17,8 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/img_icon_ampep"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".Activities.Test.TestActivity"></activity>
         <activity android:name=".Activities.Modules.Module_03.M3RegistrerActivity" />
         <activity android:name=".Activities.Modules.Module_03.M3ListActivity" />
