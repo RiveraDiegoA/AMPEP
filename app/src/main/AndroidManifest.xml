@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.riveraprojects.ampep">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/img_icon_ampep"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/img_icon_ampep"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.Test.TestActivity"></activity>
+        <activity android:name=".Activities.Modules.Module_03.M3RegistrerActivity" />
+        <activity android:name=".Activities.Modules.Module_03.M3ListActivity" />
+        <activity android:name=".Activities.Modules.Module_03.M3OptionsActivity" />
+        <activity android:name=".Activities.Modules.Module_03.M3AdvertisementsActivity" />
+        <activity android:name=".Activities.Modules.Module_02.M2ProcessActivity" />
+        <activity android:name=".Activities.Modules.Module_01.M1AppointmentActivity" />
+        <activity android:name=".Activities.ModulesAreaActivity" />
+        <activity android:name=".Activities.PermissionsActivity" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.StartupActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
