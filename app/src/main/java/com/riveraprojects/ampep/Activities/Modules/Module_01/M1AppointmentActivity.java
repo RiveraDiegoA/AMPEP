@@ -23,6 +23,5 @@ public class M1AppointmentActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        goModulesAreaActivity();
     }
 }

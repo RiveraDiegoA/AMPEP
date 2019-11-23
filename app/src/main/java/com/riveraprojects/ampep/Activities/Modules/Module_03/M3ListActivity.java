@@ -64,6 +64,36 @@ public class M3ListActivity extends AppCompatActivity {
         advertisementList.add(new Advertisement("ANUNCIO 02", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
         advertisementList.add(new Advertisement("ANUNCIO 03", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
         advertisementList.add(new Advertisement("ANUNCIO 04", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+
+        advertisementList.add(new Advertisement("ANUNCIO 05", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 06", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 07", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 08", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+
+        advertisementList.add(new Advertisement("ANUNCIO 10", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 11", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 12", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
+        /*advertisementList.add(new Advertisement("ANUNCIO 13", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+
+        advertisementList.add(new Advertisement("ANUNCIO 14", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 15", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 16", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 17", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+
+        advertisementList.add(new Advertisement("ANUNCIO 18", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 19", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 20", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 21", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+
+        advertisementList.add(new Advertisement("ANUNCIO 22", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 23", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 24", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 25", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+
+        advertisementList.add(new Advertisement("ANUNCIO 26", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 27", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 28", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
+        advertisementList.add(new Advertisement("ANUNCIO 29", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));*/
     }
 
     private void customOrientation() {
@@ -74,11 +104,13 @@ public class M3ListActivity extends AppCompatActivity {
     }
 
     private void goModulesAreaActivity() {
-        startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class));
+        startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class)
+                .putExtra("SEND_CODE", "CODE_M3LA"));
     }
 
     private void goM3OptionsActivity() {
-        startActivity(new Intent(getApplicationContext(), M3OptionsActivity.class));
+        startActivity(new Intent(getApplicationContext(), M3OptionsActivity.class)
+                .putExtra("SEND_CODE", "CODE_M3LA"));
     }
 
     @Override

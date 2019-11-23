@@ -95,7 +95,8 @@ public class M2ProcessActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void goModulesAreaActivity() {
-        startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class));
+        startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class)
+                .putExtra("SEND_CODE", "CODE_M2PA"));
     }
 
     private void sendtoRepository(String web) {
@@ -134,7 +135,6 @@ public class M2ProcessActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         goModulesAreaActivity();
     }
 

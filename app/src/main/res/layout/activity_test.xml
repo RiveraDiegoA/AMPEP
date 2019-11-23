@@ -11,18 +11,35 @@
     <Button
         android:id="@+id/at_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_7sdp"
+        android:layout_height="43dp"
+        android:layout_margin="7dp"
         android:background="@drawable/btn_outl_grad_pd_p"
         android:elevation="4dp"
-        android:paddingHorizontal="30dp"
-        android:text="OBTENER PERSONAS"
+        android:minWidth="200dp"
+        android:text="OBTENER USUARIOS"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="13sp"
         android:textStyle="bold" />
 
     <ListView
         android:id="@+id/at_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/at_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/colorGrade"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/at_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

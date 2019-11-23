@@ -31,6 +31,7 @@
             android:layout_marginHorizontal="40dp"
             android:text="@string/permission_text"
             android:textColor="@color/colorWhite"
+            android:textSize="13sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -40,18 +41,21 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|bottom"
-        android:paddingBottom="70dp">
+        android:paddingBottom="40dp">
 
         <Button
             android:id="@+id/ap_btn_permission"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="43dp"
+            android:layout_margin="7dp"
             android:background="@drawable/btn_outl_w"
-            android:paddingHorizontal="30dp"
+            android:elevation="4dp"
+            android:minWidth="200dp"
             android:text="CONCEDER PERMISOS"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textSize="15sp" />
+            android:textSize="13sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

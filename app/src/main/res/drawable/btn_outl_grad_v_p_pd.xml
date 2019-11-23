@@ -9,19 +9,19 @@
                 android:endColor="@color/colorPrimary"
                 android:startColor="@color/colorPrimaryDark"
                 android:type="linear" />
-            <corners android:radius="20dp" />
+            <corners android:radius="30dp" />
         </shape>
     </item>
     <!-- create the stroke for top, left, bottom and right with the dp you want -->
     <item
-        android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
-        android:top="2dp">
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
         <shape android:shape="rectangle">
             <!-- fill the inside in the color you want (could also be a gradient again if you want to, just change solid to gradient and enter angle, start, maybe center, and end color) -->
             <solid android:color="@color/colorWhite" />
-            <corners android:radius="20dp" />
+            <corners android:radius="30dp" />
         </shape>
     </item>
 

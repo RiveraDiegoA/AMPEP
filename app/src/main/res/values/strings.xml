@@ -2,4 +2,5 @@
     <string name="app_name">AMPEP</string>
     <string name="permission_text">Para el correcto desempeño de la aplicación, debe conceder los permisos requeridos. Por favor presione el botón para continuar.</string>
     <string name="text_desc">ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep</string>
+    <string name="desc_welcome">Bienvenido estimado usuario, gracias por emplear nuestra aplicación. Así mismo, ser parte de esta grandiosa comunidad.</string>
 </resources>

@@ -26,19 +26,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/am2p_cardview_01"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_v_p_pd"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -78,31 +78,36 @@
                         <Button
                             android:id="@+id/am2p_c1_btn_01"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="43dp"
+                            android:layout_margin="7dp"
                             android:background="@drawable/btn_outl_grad_v_p_pd"
                             android:drawableRight="@drawable/ic_eye_w"
-                            android:drawablePadding="10dp"
+                            android:drawablePadding="5dp"
                             android:drawableTint="@color/colorPrimaryDark"
+                            android:elevation="4dp"
                             android:paddingHorizontal="30dp"
                             android:text="VER DOCUMENTOS"
                             android:textAllCaps="false"
-                            android:textColor="@color/colorPrimaryDark" />
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <Button
                     android:id="@+id/am2p_c1_btn_02"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="43dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_margin="7dp"
                     android:background="@drawable/btn_grad_pd_p"
                     android:drawableRight="@drawable/ic_arrow_right_w"
-                    android:drawablePadding="10dp"
+                    android:drawablePadding="5dp"
+                    android:elevation="4dp"
                     android:paddingHorizontal="30dp"
                     android:text="CONTINUAR"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

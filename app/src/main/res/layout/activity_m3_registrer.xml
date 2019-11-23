@@ -5,32 +5,45 @@
     android:id="@+id/am3r_layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_grad_v"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".Activities.Modules.Module_03.M3RegistrerActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_margin="7dp"
+        android:background="@drawable/header_outl_grad_v_p_pd"
+        android:elevation="4dp"
         android:gravity="center"
-        android:minHeight="60dp"
-        android:text="REGISTRO DE ANUNCIOS"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_books_w"
+            android:drawableRight="@drawable/ic_books_w"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:text="LISTA DE ANUNCIOS"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="20dp">
+        android:elevation="4dp"
+        app:cardCornerRadius="15dp"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_reg_r_w"
             android:orientation="vertical"
-            android:padding="30dp">
+            android:padding="15dp">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -45,16 +58,55 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_margin="7dp"
+                        android:background="@drawable/spinner_outline_grey"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/am3r_spinner_01"
+                            android:layout_width="match_parent"
+                            android:layout_height="43dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:background="@drawable/spinner_outline_grey"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/am3r_spinner_02"
+                            android:layout_width="match_parent"
+                            android:layout_height="43dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:background="@drawable/spinner_outline_grey"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatSpinner
+                            android:id="@+id/am3r_spinner_03"
+                            android:layout_width="match_parent"
+                            android:layout_height="43dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/am3r_btn_camp_01"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_width="43dp"
+                            android:layout_height="43dp"
+                            android:layout_margin="7dp"
                             android:background="@drawable/btn_circle_outl_grad_p_pd"
+                            android:elevation="4dp"
                             android:padding="7dp"
                             android:src="@drawable/ic_date_w"
                             android:tint="@color/colorPrimaryDark" />
@@ -63,32 +115,34 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
                             android:layout_weight="1">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/am3r_camp_01"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="43dp"
                                 android:enabled="false"
                                 android:hint="Fecha inicio"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:textSize="14sp" />
+                                android:textSize="13sp" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <ImageView
                             android:id="@+id/am3r_btn_camp_02"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="43dp"
+                            android:layout_height="43dp"
+                            android:layout_margin="7dp"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/btn_circle_outl_grad_p_pd"
+                            android:elevation="4dp"
                             android:padding="7dp"
                             android:src="@drawable/ic_date_w"
                             android:tint="@color/colorPrimaryDark" />
@@ -97,16 +151,18 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
                             android:layout_weight="1">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/am3r_camp_02"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="43dp"
+                                android:elevation="4dp"
                                 android:enabled="false"
                                 android:hint="Fecha finalización"
                                 android:textColor="@color/colorPrimaryDark"
-                                android:textSize="14sp" />
+                                android:textSize="13sp" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -114,23 +170,24 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_margin="7dp"
                         app:counterEnabled="true"
                         app:counterMaxLength="120">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/am3r_camp_03"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="43dp"
                             android:hint="Título"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
+                            android:textSize="13sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
                         app:counterEnabled="true"
                         app:counterMaxLength="200">
 
@@ -142,7 +199,7 @@
                             android:inputType="textMultiLine"
                             android:minHeight="120dp"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="14sp" />
+                            android:textSize="13sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
             </ScrollView>
@@ -152,16 +209,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/am3r_btn_close"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_margin="7dp"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:elevation="4dp"
+                    android:src="@drawable/ic_close_w"
+                    android:tint="@color/colorPrimaryDark" />
 
                 <Button
                     android:id="@+id/am3r_btn_registrer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="43dp"
+                    android:layout_margin="7dp"
                     android:background="@drawable/btn_grad_pd_p"
+                    android:elevation="4dp"
                     android:text="REGISTRAR"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
 

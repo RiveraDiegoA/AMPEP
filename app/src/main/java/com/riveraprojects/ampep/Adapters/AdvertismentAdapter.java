@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.riveraprojects.ampep.Models.Advertisement;
@@ -27,10 +29,12 @@ public class AdvertismentAdapter extends RecyclerView.Adapter<AdvertismentAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private CardView cardView;
         private TextView title, desc, teacher, date;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            cardView = itemView.findViewById(R.id.ia_cardview);
             title = itemView.findViewById(R.id.ia_title);
             desc = itemView.findViewById(R.id.ia_desc);
             teacher = itemView.findViewById(R.id.ia_teacher);
@@ -52,6 +56,12 @@ public class AdvertismentAdapter extends RecyclerView.Adapter<AdvertismentAdapte
         holder.desc.setText(advertisement.getDesc());
         holder.teacher.setText(advertisement.getTeacher());
         holder.date.setText(advertisement.getDate());
+
+        //holder.cardView.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.fade_scale));
+        holder.title.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.fade_scale));
+        holder.desc.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.fade_scale));
+        holder.teacher.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.fade_scale));
+        holder.date.setAnimation(AnimationUtils.loadAnimation(activity, R.anim.fade_scale));
     }
 
     @Override

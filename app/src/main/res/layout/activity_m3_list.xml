@@ -5,37 +5,35 @@
     android:id="@+id/am3l_layout_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_grad_v"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".Activities.Modules.Module_03.M3ListActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_margin="7dp"
+        android:background="@drawable/header_outl_grad_v_p_pd"
+        android:elevation="4dp"
         android:gravity="center"
-        android:minHeight="60dp"
-        android:text="LISTA DE ANUNCIOS"
-        android:textColor="@color/colorWhite"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
 
-    <androidx.cardview.widget.CardView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_books_w"
+            android:drawableRight="@drawable/ic_books_w"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:text="LISTA DE ANUNCIOS"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/am3l_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/am3l_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        android:layout_height="match_parent" />
 </LinearLayout>

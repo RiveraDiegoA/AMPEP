@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_grad_v"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".Activities.ModulesAreaActivity">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ama_btn_exit"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_margin="7dp"
         android:background="@drawable/bg_outl_circ_w"
+        android:elevation="4dp"
         android:padding="5dp"
         android:src="@drawable/ic_exit_w" />
 
@@ -28,21 +29,24 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/ama_btn_01"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:cardCornerRadius="20dp">
+            android:layout_height="130dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_pd_p"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="20dp">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:padding="9dp"
                     android:src="@drawable/img_m1_appointment" />
 
                 <TextView
@@ -60,22 +64,24 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/ama_btn_02"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginVertical="20dp"
-            app:cardCornerRadius="20dp">
+            android:layout_height="130dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_pd_p"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="20dp">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:padding="9dp"
                     android:src="@drawable/img_m2_process" />
 
                 <TextView
@@ -93,21 +99,24 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/ama_btn_03"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            app:cardCornerRadius="20dp">
+            android:layout_height="130dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_pd_p"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="20dp">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:padding="9dp"
                     android:src="@drawable/img_m3_advertisement" />
 
                 <TextView
@@ -134,15 +143,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/ama_btn_01_01"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginHorizontal="5dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_pd_p"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="14dp">
@@ -151,6 +160,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:padding="8dp"
                     android:src="@drawable/img_m1_appointment" />
 
                 <TextView
@@ -160,7 +171,7 @@
                     android:gravity="center_vertical|right"
                     android:text="CITAS"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -168,15 +179,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/ama_btn_02_01"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginHorizontal="5dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_pd_p"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="15dp">
@@ -185,6 +196,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:padding="8dp"
                     android:src="@drawable/img_m2_process" />
 
                 <TextView
@@ -194,7 +207,7 @@
                     android:gravity="center_vertical|right"
                     android:text="PROCESO DE MATRÍCULA"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -202,15 +215,15 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/ama_btn_03_01"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_marginHorizontal="5dp"
+            android:layout_height="120dp"
             android:layout_weight="1"
-            app:cardCornerRadius="20dp">
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_pd_p"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="15dp">
@@ -219,6 +232,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/btn_circle_outl_grad_p_pd"
+                    android:padding="8dp"
                     android:src="@drawable/img_m3_advertisement" />
 
                 <TextView
@@ -228,7 +243,7 @@
                     android:gravity="center_vertical|right"
                     android:text="ANUNCIOS"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

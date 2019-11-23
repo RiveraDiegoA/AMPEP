@@ -7,10 +7,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,10 +32,12 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
 
     private LinearLayout layout_01, layout_02;
     private CardView btn_01, btn_01_01, btn_02, btn_02_01, btn_03, btn_03_01;
-    private ImageView btn_exit;
+    private ImageButton btn_exit;
     private SharedPreferences sharedPreferences;
     private String user, pass;
-    private int charge;
+    private int type;
+
+    private static String TAG = ModulesAreaActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +46,7 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
 
         init();
         uploadPreferences();
+        getIntentData();
         customOrientation();
     }
 
@@ -62,13 +70,24 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
         btn_exit.setOnClickListener(this);
     }
 
+    private void getIntentData() {
+        Intent intent = getIntent();
+        String code = intent.getStringExtra("SEND_CODE");
+
+        if (code.equalsIgnoreCase("CODE_LA")) {
+            showWelcomeDialog(user);
+        } else {
+            Log.d(TAG, "RETURN OF OTHER ACTIVITIES");
+        }
+    }
+
     private void uploadPreferences() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        user = sharedPreferences.getString("USER", null);
-        pass = sharedPreferences.getString("PASS", null);
-        charge = sharedPreferences.getInt("CHARGE", 0);
+        user = sharedPreferences.getString("USR_USER", null);
+        pass = sharedPreferences.getString("USR_PASS", null);
+        type = sharedPreferences.getInt("USR_TYPE", 0);
 
-        if (charge == 2) {
+        if (type == 3) {
             btn_01.setVisibility(View.GONE);
             btn_01_01.setVisibility(View.GONE);
             btn_02.setVisibility(View.GONE);
@@ -76,12 +95,34 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    private void showWelcomeDialog(String user) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View child = LayoutInflater.from(this).inflate(R.layout.item_popup_welcome, null);
+        builder.setView(child);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.show();
+
+        TextView ipw_name = alertDialog.findViewById(R.id.ipw_name);
+        Button ipw_btn = alertDialog.findViewById(R.id.ipw_btn);
+
+        ipw_name.setText(user);
+
+        ipw_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
     private void customOrientation() {
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
         if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) {
             layout_01.setVisibility(View.GONE);
             layout_02.setVisibility(View.VISIBLE);
-            if (charge == 2) {
+            if (type == 3) {
                 layout_02.setPadding(400, 0, 400, 0);
             }
         }
@@ -97,9 +138,9 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
                 activity = new M2ProcessActivity();
                 break;
             case "M3":
-                if (charge == 1) {
+                if (type == 2) {
                     activity = new M3ListActivity();
-                } else if (charge == 2) {
+                } else if (type == 3) {
                     activity = new M3OptionsActivity();
                 }
                 break;

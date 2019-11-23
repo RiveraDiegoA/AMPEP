@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ia_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    app:cardCornerRadius="20dp">
+    app:cardCornerRadius="15dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_outl_grad_pd_p"
         android:orientation="vertical"
         android:padding="15dp">
 
@@ -19,36 +20,75 @@
             android:layout_height="wrap_content"
             android:text="TÍTULO"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <com.codesgood.views.JustifiedTextView
             android:id="@+id/ia_desc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="7dp"
             android:minHeight="100dp"
-            android:text="@string/permission_text"
-            android:textSize="14sp" />
+            android:text="@string/text_desc"
+            android:textColor="@color/colorGrey"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/ia_turn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_books_w"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/colorGrey"
+            android:gravity="center_vertical"
+            android:text="Noche"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/ia_grade"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:drawableLeft="@drawable/ic_books_w"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/colorGrey"
+            android:gravity="center_vertical"
+            android:text="1ro Secundaria"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/ia_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:drawableLeft="@drawable/ic_books_w"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/colorGrey"
+            android:gravity="center_vertical"
+            android:text="T6AJ"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/ia_teacher"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:gravity="left"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_account_circle_w"
+            android:drawablePadding="5dp"
+            android:drawableTint="@color/colorGrey"
+            android:gravity="center_vertical"
             android:text="Rivera Ambrosio Jean Diego"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/ia_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="7dp"
             android:gravity="right"
             android:text="26/10/2019"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

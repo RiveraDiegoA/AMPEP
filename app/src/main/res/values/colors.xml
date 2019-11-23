@@ -13,8 +13,12 @@
 
     <color name="colorWhite">#fff</color>
     <color name="colorGrey">#bdc3c7</color>
+    <color name="colorGrey_light">#D5DDDF</color>
     <color name="colorGreyDark">#3C3B3F</color>
     <color name="colorGrade">#2c3e50</color>
+
+    <color name="colorGray">#757575</color>
+    <color name="colorGray_light">#BEBEBE</color>
 
     <color name="colorTransparentWhite">#8BFFFFFF</color>
     <color name="colorTransparentWhite_2">#B2FFFFFF</color>
