@@ -1,8 +1,5 @@
 package com.riveraprojects.ampep.Activities.Modules.Module_02;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,11 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.bestsoft32.tt_fancy_gif_dialog_lib.TTFancyGifDialog;
-import com.bestsoft32.tt_fancy_gif_dialog_lib.TTFancyGifDialogListener;
 import com.riveraprojects.ampep.Activities.ModulesAreaActivity;
 import com.riveraprojects.ampep.R;
 import com.shuhart.stepview.StepView;

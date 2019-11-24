@@ -144,6 +144,34 @@
                         android:orientation="horizontal">
 
                         <ImageButton
+                            android:id="@+id/al_btn_usr_2"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/btn_circle_outl_grad_p_pd"
+                            android:elevation="4dp"
+                            android:src="@drawable/ic_account_circle_w"
+                            android:textAllCaps="false"
+                            android:textStyle="bold"
+                            android:tint="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="USR2"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageButton
                             android:id="@+id/al_btn_tch"
                             android:layout_width="45dp"
                             android:layout_height="45dp"

@@ -1,13 +1,7 @@
 package com.riveraprojects.ampep.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -19,14 +13,14 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.riveraprojects.ampep.Activities.Test.TestActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.riveraprojects.ampep.Models.Login;
 import com.riveraprojects.ampep.Models.UsuarioSistema;
 import com.riveraprojects.ampep.R;
 import com.riveraprojects.ampep.Service.ApiService;
 import com.riveraprojects.ampep.Service.ApiServiceGenerator;
 
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LinearLayout al_layout_main, al_layout_1, al_layout_1_1, al_layout_2;
     private EditText al_edt_user, al_edt_pass;
     private Button al_btn_signin;
-    private ImageButton al_btn_usr, al_btn_tch;
+    private ImageButton al_btn_usr, al_btn_usr_2,  al_btn_tch;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -71,9 +65,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         al_edt_pass = findViewById(R.id.al_edt_pass);
         al_btn_signin = findViewById(R.id.al_btn_signin);
         al_btn_usr = findViewById(R.id.al_btn_usr);
+        al_btn_usr_2 = findViewById(R.id.al_btn_usr_2);
         al_btn_tch = findViewById(R.id.al_btn_tch);
         al_btn_signin.setOnClickListener(this);
         al_btn_usr.setOnClickListener(this);
+        al_btn_usr_2.setOnClickListener(this);
         al_btn_tch.setOnClickListener(this);
     }
 
@@ -167,6 +163,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     estado = response.body().getEstado();
 
                     editor
+                            .putInt("USR_USER_ID", idUsusist)
                             .putString("USR_USER", usuario)
                             .putString("USR_PASS", contrasen)
                             .putInt("USR_TYPE", idTipoUsuSist)
@@ -324,6 +321,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (usr.equalsIgnoreCase("USR")) {
             al_edt_user.setText("drivera_usr");
             al_edt_pass.setText("usr");
+        } else if (usr.equalsIgnoreCase("USR_2")) {
+            al_edt_user.setText("drivera_usr_2");
+            al_edt_pass.setText("usr_2");
         } else if (usr.equalsIgnoreCase("TCH")) {
             al_edt_user.setText("drivera_tch");
             al_edt_pass.setText("tch");
@@ -343,6 +343,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.al_btn_usr:
                 setControllers("USR");
+                break;
+            case R.id.al_btn_usr_2:
+                setControllers("USR_2");
                 break;
             case R.id.al_btn_tch:
                 setControllers("TCH");

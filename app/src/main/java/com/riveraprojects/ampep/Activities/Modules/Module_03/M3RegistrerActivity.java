@@ -1,7 +1,5 @@
 package com.riveraprojects.ampep.Activities.Modules.Module_03;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.riveraprojects.ampep.R;
 
@@ -27,6 +28,7 @@ public class M3RegistrerActivity extends AppCompatActivity implements View.OnCli
     private ImageView btn_camp_01, btn_camp_02;
     private EditText edt_camp_01, edt_camp_02, edt_camp_03, edt_camp_04;
     private Button btn_registrer;
+    private ImageButton btn_back;
     private Calendar customCalendar;
 
     @Override
@@ -47,10 +49,12 @@ public class M3RegistrerActivity extends AppCompatActivity implements View.OnCli
         edt_camp_02 = findViewById(R.id.am3r_camp_02);
         edt_camp_03 = findViewById(R.id.am3r_camp_03);
         edt_camp_04 = findViewById(R.id.am3r_camp_04);
+        btn_back = findViewById(R.id.am3r_btn_close);
         btn_registrer = findViewById(R.id.am3r_btn_registrer);
 
         btn_camp_01.setOnClickListener(this);
         btn_camp_02.setOnClickListener(this);
+        btn_back.setOnClickListener(this);
         btn_registrer.setOnClickListener(this);
     }
 
@@ -120,6 +124,9 @@ public class M3RegistrerActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.am3r_btn_camp_02:
                 showCalendar("btn_02");
+                break;
+            case R.id.am3r_btn_close:
+                onBackPressed();
                 break;
             case R.id.am3r_btn_registrer:
                 clearControllers();

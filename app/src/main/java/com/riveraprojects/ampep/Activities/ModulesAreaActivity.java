@@ -13,7 +13,6 @@ import android.view.Surface;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.riveraprojects.ampep.Activities.Modules.Module_01.M1AppointmentActivity;
 import com.riveraprojects.ampep.Activities.Modules.Module_02.M2ProcessActivity;
 import com.riveraprojects.ampep.Activities.Modules.Module_03.M3ListActivity;
 import com.riveraprojects.ampep.Activities.Modules.Module_03.M3OptionsActivity;
@@ -87,7 +85,7 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
         pass = sharedPreferences.getString("USR_PASS", null);
         type = sharedPreferences.getInt("USR_TYPE", 0);
 
-        if (type == 3) {
+        if (type == 5) {
             btn_01.setVisibility(View.GONE);
             btn_01_01.setVisibility(View.GONE);
             btn_02.setVisibility(View.GONE);
@@ -138,9 +136,9 @@ public class ModulesAreaActivity extends AppCompatActivity implements View.OnCli
                 activity = new M2ProcessActivity();
                 break;
             case "M3":
-                if (type == 2) {
+                if (type == 4) {
                     activity = new M3ListActivity();
-                } else if (type == 3) {
+                } else if (type == 5) {
                     activity = new M3OptionsActivity();
                 }
                 break;

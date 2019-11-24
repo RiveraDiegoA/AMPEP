@@ -1,14 +1,14 @@
 package com.riveraprojects.ampep.Activities.Modules.Module_03;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Surface;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.riveraprojects.ampep.Activities.ModulesAreaActivity;
 import com.riveraprojects.ampep.R;
@@ -70,7 +70,7 @@ public class M3OptionsActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        goModulesAreaActivity();
+        //goModulesAreaActivity();
     }
 
     @Override
