@@ -3,12 +3,10 @@ package com.riveraprojects.ampep.Models;
 import java.util.Date;
 
 public class TipoUsuario {
+
     private int idTipousu;
-
     private Date fechCreac;
-
     private String descripci;
-
     private String estado;
 
     public int getIdTipousu() {
@@ -41,5 +39,15 @@ public class TipoUsuario {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "TipoUsuario{" +
+                "idTipousu=" + idTipousu +
+                ", fechCreac=" + fechCreac +
+                ", descripci='" + descripci + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

@@ -37,10 +37,10 @@ public class StartupActivity extends AppCompatActivity {
                     if (!permissionsGranted()) {
                         startActivity(new Intent(getApplicationContext(), PermissionsActivity.class));
                     } else {
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                     }
                 } else {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                 }
             }
         }, 1500);

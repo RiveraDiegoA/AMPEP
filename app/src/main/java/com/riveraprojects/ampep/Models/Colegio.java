@@ -5,39 +5,22 @@ import java.util.Date;
 public class Colegio {
 
     private int idColegio;
-
     private String idModularColegio;
-
     private String idLocalColegio;
-
     private String nombrecpMineduColegio;
-
     private String idcpMineduColegio;
-
     private String nomColegio;
-
     private String turnoColegio;
-
     private String tipoColegio;
-
     private String telfColegio;
-
     private String directorColegio;
-
     private String gestionDepenColegio;
-
     private Date fecRegistroColegio;
-
     private String fundadorColegio;
-
     private String direccionColegio;
-
     private String linkFacebookColegio;
-
     private String linkImagenColegio;
-
     private Distrito distritoColegio;
-
     private Ugel idUgelColegio;
 
     public int getIdColegio() {
@@ -182,5 +165,29 @@ public class Colegio {
 
     public void setIdUgelColegio(Ugel idUgelColegio) {
         this.idUgelColegio = idUgelColegio;
+    }
+
+    @Override
+    public String toString() {
+        return "Colegio{" +
+                "idColegio=" + idColegio +
+                ", idModularColegio='" + idModularColegio + '\'' +
+                ", idLocalColegio='" + idLocalColegio + '\'' +
+                ", nombrecpMineduColegio='" + nombrecpMineduColegio + '\'' +
+                ", idcpMineduColegio='" + idcpMineduColegio + '\'' +
+                ", nomColegio='" + nomColegio + '\'' +
+                ", turnoColegio='" + turnoColegio + '\'' +
+                ", tipoColegio='" + tipoColegio + '\'' +
+                ", telfColegio='" + telfColegio + '\'' +
+                ", directorColegio='" + directorColegio + '\'' +
+                ", gestionDepenColegio='" + gestionDepenColegio + '\'' +
+                ", fecRegistroColegio=" + fecRegistroColegio +
+                ", fundadorColegio='" + fundadorColegio + '\'' +
+                ", direccionColegio='" + direccionColegio + '\'' +
+                ", linkFacebookColegio='" + linkFacebookColegio + '\'' +
+                ", linkImagenColegio='" + linkImagenColegio + '\'' +
+                ", distritoColegio=" + distritoColegio +
+                ", idUgelColegio=" + idUgelColegio +
+                '}';
     }
 }

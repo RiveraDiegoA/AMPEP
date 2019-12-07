@@ -5,25 +5,15 @@ import java.util.Date;
 public class UsuarioSistema {
 
     private int idUsusist;
-
     private Date fechCreac;
-
     private String usuario;
-
     private Date fecIniciacc;
-
     private Date horIniciacc;
-
     private Date fecFinacc;
-
     private Date horFinacc;
-
     private String contrasen;
-
     private String estado;
-
     private int idPersona;
-
     private TipoUsuario idTipoUsuSist;
 
     public int getIdUsusist() {
@@ -112,5 +102,22 @@ public class UsuarioSistema {
 
     public void setIdTipoUsuSist(TipoUsuario idTipoUsuSist) {
         this.idTipoUsuSist = idTipoUsuSist;
+    }
+
+    @Override
+    public String toString() {
+        return "UsuarioSistema{" +
+                "idUsusist=" + idUsusist +
+                ", fechCreac=" + fechCreac +
+                ", usuario='" + usuario + '\'' +
+                ", fecIniciacc=" + fecIniciacc +
+                ", horIniciacc=" + horIniciacc +
+                ", fecFinacc=" + fecFinacc +
+                ", horFinacc=" + horFinacc +
+                ", contrasen='" + contrasen + '\'' +
+                ", estado='" + estado + '\'' +
+                ", idPersona=" + idPersona +
+                ", idTipoUsuSist=" + idTipoUsuSist +
+                '}';
     }
 }

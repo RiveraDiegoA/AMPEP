@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ipw_cardview"
+    android:id="@+id/ipip_cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="15dp"
@@ -16,7 +16,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
@@ -37,127 +36,92 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/ipw_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="BIENVENIDO"
+                    android:text="USUARIOS"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/ipw_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Usuario"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp" />
-
                 <com.codesgood.views.JustifiedTextView
-                    android:id="@+id/ipw_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:layout_marginBottom="7dp"
                     android:gravity="center_horizontal"
                     android:maxLines="8"
-                    android:text="@string/desc_welcome"
+                    android:text="@string/desc_users"
                     android:textColor="@color/colorGrey"
                     android:textSize="13sp" />
 
                 <LinearLayout
-                    android:id="@+id/ipw_layout_01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <Button
-                        android:id="@+id/ipw_btn"
+                        android:id="@+id/ipusrs_btn_01"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="43dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="7dp"
-                        android:background="@drawable/btn_outl_grad_pd_p"
-                        android:drawableRight="@drawable/ic_arrow_right_w"
-                        android:drawablePadding="5dp"
-                        android:drawableTint="@color/colorPrimaryDark"
+                        android:background="@drawable/btn_w"
                         android:elevation="4dp"
+                        android:minWidth="200dp"
                         android:paddingHorizontal="30dp"
-                        android:text="EMPEZAR"
+                        android:text="PROFESOR 01"
                         android:textAllCaps="false"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="10sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ipw_layout_02"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <Button
-                        android:id="@+id/ipw_btn_01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="7dp"
-                        android:background="@drawable/btn_outl_grad_pd_p"
-                        android:drawableRight="@drawable/ic_close_w"
-                        android:drawablePadding="5dp"
-                        android:drawableTint="@color/colorPrimaryDark"
-                        android:elevation="4dp"
-                        android:paddingHorizontal="30dp"
-                        android:text="NO"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/colorGrey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/ipw_btn_02"
+                        android:id="@+id/ipusrs_btn_02"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="43dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="7dp"
-                        android:background="@drawable/btn_outl_grad_pd_p"
-                        android:drawableRight="@drawable/ic_arrow_right_w"
-                        android:drawablePadding="5dp"
-                        android:drawableTint="@color/colorPrimaryDark"
+                        android:background="@drawable/btn_w"
                         android:elevation="4dp"
+                        android:minWidth="200dp"
                         android:paddingHorizontal="30dp"
-                        android:text="SI"
+                        android:text="PROFESOR 02"
                         android:textAllCaps="false"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/colorGrey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ipw_layout_03"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:visibility="gone">
 
                     <Button
-                        android:id="@+id/ipw_btn_03"
+                        android:id="@+id/ipusrs_btn_03"
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="43dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="7dp"
-                        android:background="@drawable/btn_outl_grad_pd_p"
+                        android:background="@drawable/btn_w"
                         android:elevation="4dp"
+                        android:minWidth="200dp"
                         android:paddingHorizontal="30dp"
-                        android:text="ENTENDIDO"
+                        android:text="APODERADO 01"
                         android:textAllCaps="false"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/colorGrey"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/ipusrs_btn_04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="43dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="7dp"
+                        android:background="@drawable/btn_w"
+                        android:elevation="4dp"
+                        android:minWidth="200dp"
+                        android:paddingHorizontal="30dp"
+                        android:text="APODERADO 02"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorGrey"
                         android:textSize="10sp"
                         android:textStyle="bold" />
                 </LinearLayout>

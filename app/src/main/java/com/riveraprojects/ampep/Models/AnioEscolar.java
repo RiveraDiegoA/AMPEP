@@ -3,6 +3,7 @@ package com.riveraprojects.ampep.Models;
 import java.util.Date;
 
 public class AnioEscolar {
+
     private int idAnioEscolar;
 
     private Date fecregisAnioEscolar;
@@ -71,5 +72,18 @@ public class AnioEscolar {
 
     public void setColegioAnioEscolar(Colegio colegioAnioEscolar) {
         this.colegioAnioEscolar = colegioAnioEscolar;
+    }
+
+    @Override
+    public String toString() {
+        return "AnioEscolar{" +
+                "idAnioEscolar=" + idAnioEscolar +
+                ", fecregisAnioEscolar=" + fecregisAnioEscolar +
+                ", descripAnioEscolar='" + descripAnioEscolar + '\'' +
+                ", estadoAnioEscolar='" + estadoAnioEscolar + '\'' +
+                ", fecicioAnioEscolar=" + fecicioAnioEscolar +
+                ", fecfinAnioEscolar=" + fecfinAnioEscolar +
+                ", colegioAnioEscolar=" + colegioAnioEscolar +
+                '}';
     }
 }

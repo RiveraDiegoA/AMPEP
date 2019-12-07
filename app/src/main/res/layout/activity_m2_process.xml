@@ -122,7 +122,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_v_p_pd"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -201,7 +200,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_v_p_pd"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -280,7 +278,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/btn_outl_grad_v_p_pd"
                 android:orientation="vertical"
                 android:padding="10dp">
 

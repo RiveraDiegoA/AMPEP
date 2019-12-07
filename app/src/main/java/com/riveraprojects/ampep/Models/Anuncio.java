@@ -4,70 +4,71 @@ import java.util.Date;
 
 public class Anuncio {
 
-    private String titulo;
-
-    private String descrip;
-
-    private String estado;
-
-    private Date fechRegis;
-
-    private Date horIniacc;
-
-    private Date fecFinacc;
-
+    private int idAnuncio;
+    private String titAnuncio;
+    private String descAnuncio;
+    private Date fecRegAnuncio;
+    private Date fecinAnuncio;
+    private Date fecfinAnuncio;
+    private String estadoAnuncio;
     private Colegio colegioAnuncio;
+    private GradoEscolar gradoAnuncio;
+    private UsuarioSistema usuariosisAnuncio;
 
-    private GradoEscolar gradoColegioAnuncio;
-
-    private UsuarioSistema usuarioAnuncio;
-
-    public String getTitulo() {
-        return titulo;
+    public int getIdAnuncio() {
+        return idAnuncio;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setIdAnuncio(int idAnuncio) {
+        this.idAnuncio = idAnuncio;
     }
 
-    public String getDescrip() {
-        return descrip;
+    public String getTitAnuncio() {
+        return titAnuncio;
     }
 
-    public void setDescrip(String descrip) {
-        this.descrip = descrip;
+    public void setTitAnuncio(String titAnuncio) {
+        this.titAnuncio = titAnuncio;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getDescAnuncio() {
+        return descAnuncio;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setDescAnuncio(String descAnuncio) {
+        this.descAnuncio = descAnuncio;
     }
 
-    public Date getFechRegis() {
-        return fechRegis;
+    public Date getFecRegAnuncio() {
+        return fecRegAnuncio;
     }
 
-    public void setFechRegis(Date fechRegis) {
-        this.fechRegis = fechRegis;
+    public void setFecRegAnuncio(Date fecRegAnuncio) {
+        this.fecRegAnuncio = fecRegAnuncio;
     }
 
-    public Date getHorIniacc() {
-        return horIniacc;
+    public Date getFecinAnuncio() {
+        return fecinAnuncio;
     }
 
-    public void setHorIniacc(Date horIniacc) {
-        this.horIniacc = horIniacc;
+    public void setFecinAnuncio(Date fecinAnuncio) {
+        this.fecinAnuncio = fecinAnuncio;
     }
 
-    public Date getFecFinacc() {
-        return fecFinacc;
+    public Date getFecfinAnuncio() {
+        return fecfinAnuncio;
     }
 
-    public void setFecFinacc(Date fecFinacc) {
-        this.fecFinacc = fecFinacc;
+    public void setFecfinAnuncio(Date fecfinAnuncio) {
+        this.fecfinAnuncio = fecfinAnuncio;
+    }
+
+    public String getEstadoAnuncio() {
+        return estadoAnuncio;
+    }
+
+    public void setEstadoAnuncio(String estadoAnuncio) {
+        this.estadoAnuncio = estadoAnuncio;
     }
 
     public Colegio getColegioAnuncio() {
@@ -78,19 +79,35 @@ public class Anuncio {
         this.colegioAnuncio = colegioAnuncio;
     }
 
-    public GradoEscolar getGradoColegioAnuncio() {
-        return gradoColegioAnuncio;
+    public GradoEscolar getGradoAnuncio() {
+        return gradoAnuncio;
     }
 
-    public void setGradoColegioAnuncio(GradoEscolar gradoColegioAnuncio) {
-        this.gradoColegioAnuncio = gradoColegioAnuncio;
+    public void setGradoAnuncio(GradoEscolar gradoAnuncio) {
+        this.gradoAnuncio = gradoAnuncio;
     }
 
-    public UsuarioSistema getUsuarioAnuncio() {
-        return usuarioAnuncio;
+    public UsuarioSistema getUsuariosisAnuncio() {
+        return usuariosisAnuncio;
     }
 
-    public void setUsuarioAnuncio(UsuarioSistema usuarioAnuncio) {
-        this.usuarioAnuncio = usuarioAnuncio;
+    public void setUsuariosisAnuncio(UsuarioSistema usuariosisAnuncio) {
+        this.usuariosisAnuncio = usuariosisAnuncio;
+    }
+
+    @Override
+    public String toString() {
+        return "Anuncio{" +
+                "idAnuncio=" + idAnuncio +
+                ", titAnuncio='" + titAnuncio + '\'' +
+                ", descAnuncio='" + descAnuncio + '\'' +
+                ", fecRegAnuncio=" + fecRegAnuncio +
+                ", fecinAnuncio=" + fecinAnuncio +
+                ", fecfinAnuncio=" + fecfinAnuncio +
+                ", estadoAnuncio='" + estadoAnuncio + '\'' +
+                ", colegioAnuncio=" + colegioAnuncio +
+                ", gradoAnuncio=" + gradoAnuncio +
+                ", usuariosisAnuncio=" + usuariosisAnuncio +
+                '}';
     }
 }

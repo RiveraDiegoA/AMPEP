@@ -3,4 +3,9 @@
     <string name="permission_text">Para el correcto desempeño de la aplicación, debe conceder los permisos requeridos. Por favor presione el botón para continuar.</string>
     <string name="text_desc">ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep ampep</string>
     <string name="desc_welcome">Bienvenido estimado usuario, gracias por emplear nuestra aplicación. Así mismo, ser parte de esta grandiosa comunidad.</string>
+    <string name="desc_ip">Estimado usuario, antes de emplear nuestra aplicación, ingrese los requisitos solícitados..</string>
+    <string name="desc_users">Selecciones un usuario:</string>
+    <string name="desc_send_anuncio_success">¡Anuncio registrado con éxito!</string>
+    <string name="desc_question_info">¿Desea seguir registrando?</string>
+    <string name="desc_module_01">Estimado usuario, la finalidad de esta área es darle la posibilidad de consultar horarios disponibles y lograr pactar una cita. Presione el botón para comunicarse con el responsable asignado.</string>
 </resources>

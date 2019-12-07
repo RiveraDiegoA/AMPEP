@@ -1,10 +1,13 @@
 package com.riveraprojects.ampep.Activities;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.widget.Button;
@@ -15,31 +18,28 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.riveraprojects.ampep.Models.Login;
 import com.riveraprojects.ampep.Models.UsuarioSistema;
 import com.riveraprojects.ampep.R;
 import com.riveraprojects.ampep.Service.ApiService;
-import com.riveraprojects.ampep.Service.ApiServiceGenerator;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout al_layout_main, al_layout_1, al_layout_1_1, al_layout_2;
     private EditText al_edt_user, al_edt_pass;
     private Button al_btn_signin;
-    private ImageButton al_btn_usr, al_btn_usr_2,  al_btn_tch;
+    private ImageButton al_btn_settings, al_btn_usrs;
 
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+    private ProgressDialog progressDialog;
 
     private int idUsusist, idPersona, idTipoUsuSist;
-    private String fechCreac, fecIniciacc, horIniciacc, fecFinacc, horFinacc;
-    private String usuario, contrasen, estado, nameTipoUsuSist;
+    private String base_url_saved, phone_saved, fechCreac, fecIniciacc, horIniciacc, fecFinacc, horFinacc;
+    private String username, password, estado, nameTipoUsuSist;
 
     private ApiService service;
 
@@ -51,8 +51,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         init();
+        getIntentData();
         uploadSettings();
-        uploadPreferences();
         customOrientation();
     }
 
@@ -64,22 +64,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         al_edt_user = findViewById(R.id.al_edt_user);
         al_edt_pass = findViewById(R.id.al_edt_pass);
         al_btn_signin = findViewById(R.id.al_btn_signin);
-        al_btn_usr = findViewById(R.id.al_btn_usr);
-        al_btn_usr_2 = findViewById(R.id.al_btn_usr_2);
-        al_btn_tch = findViewById(R.id.al_btn_tch);
+        al_btn_usrs = findViewById(R.id.al_btn_usrs);
+        al_btn_settings = findViewById(R.id.al_btn_settings);
         al_btn_signin.setOnClickListener(this);
-        al_btn_usr.setOnClickListener(this);
-        al_btn_usr_2.setOnClickListener(this);
-        al_btn_tch.setOnClickListener(this);
+        al_btn_settings.setOnClickListener(this);
+        al_btn_usrs.setOnClickListener(this);
+    }
+
+    private void getIntentData() {
+        Intent intent = getIntent();
+        base_url_saved = intent.getStringExtra("BASE_URL");
+        phone_saved = intent.getStringExtra("ASSISTANT_PHONE");
+        Log.d(TAG, "URL_BASE: " + base_url_saved);
+        Log.d(TAG, "ASSISTANT_PHONE: " + phone_saved);
     }
 
     private void uploadSettings() {
-        service = ApiServiceGenerator.createService(ApiService.class);
-    }
+        //service = ApiServiceGenerator.createService(ApiService.class);
+        /////////////////////////
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(base_url_saved)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-    private void uploadPreferences() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
+        service = retrofit.create(ApiService.class);
+        /////////////////////////
     }
 
     private void simpleValidate() {
@@ -96,7 +105,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else if (user.equals("USR0001") && pass.equals("PASS-USR") ||
                 user.equals("TCH0001") && pass.equals("PASS-TCH")) {
 
-            editor = sharedPreferences.edit();
             int charge = 0;
             if (user.equalsIgnoreCase("USR0001")) {
                 charge = 1;
@@ -104,14 +112,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 charge = 2;
             }
 
-            editor
-                    .putString("USER", user)
-                    .putString("PASS", pass)
-                    .putInt("CHARGE", charge)
-                    .apply();
-
             goModuleActivity();
-            //goTestActivity();
         } else {
             al_edt_user.requestFocus();
             Toast.makeText(LoginActivity.this, "Usuario o contraseña Incorrecto", Toast.LENGTH_SHORT).show();
@@ -119,131 +120,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loginValidate() {
-        usuario = al_edt_user.getText().toString();
-        contrasen = al_edt_pass.getText().toString();
-        if (usuario.length() < 1) {
+        username = al_edt_user.getText().toString();
+        password = al_edt_pass.getText().toString();
+        if (username.length() < 1) {
             al_edt_user.requestFocus();
             Toast.makeText(LoginActivity.this, "Ingrese Usuario", Toast.LENGTH_SHORT).show();
             return;
-        } else if (contrasen.length() < 1) {
+        } else if (password.length() < 1) {
             al_edt_pass.requestFocus();
             Toast.makeText(LoginActivity.this, "Ingrese Contraseña", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        login2();
-    }
-
-    private void loginBody() {
-        Login login = new Login(
-                usuario,
-                contrasen
-        );
-        Call<UsuarioSistema> call = service.loginBody(login);
-
-        call.enqueue(new Callback<UsuarioSistema>() {
-            @Override
-            public void onResponse(Call<UsuarioSistema> call, Response<UsuarioSistema> response) {
-                int statusCode = response.code();
-                Log.i(TAG, "HTTP status code : " + statusCode);
-                Log.i(TAG, "Response Message : " + response.message());
-
-                try {
-                    idUsusist = response.body().getIdUsusist();
-                    idTipoUsuSist = response.body().getIdTipoUsuSist().getIdTipousu();
-                    nameTipoUsuSist = response.body().getIdTipoUsuSist().getDescripci();
-                    idPersona = response.body().getIdPersona();
-
-                    fechCreac = response.body().getFechCreac().toString();
-                    fecIniciacc = response.body().getFecIniciacc().toString();
-                    horIniciacc = response.body().getFechCreac().toString();
-                    fecFinacc = response.body().getFecFinacc().toString();
-                    horFinacc = response.body().getFechCreac().toString();
-
-                    estado = response.body().getEstado();
-
-                    editor
-                            .putInt("USR_USER_ID", idUsusist)
-                            .putString("USR_USER", usuario)
-                            .putString("USR_PASS", contrasen)
-                            .putInt("USR_TYPE", idTipoUsuSist)
-                            .putInt("USR_ID_PERSON", idPersona)
-                            .putString("USR_TYPE_NAME", nameTipoUsuSist)
-                            .putString("USR_DATE_CREATE", fechCreac)
-                            .putString("USR_DATE_START", fecIniciacc)
-                            .putString("USR_TIME_START", horIniciacc)
-                            .putString("USR_DATE_END", fecFinacc)
-                            .putString("USR_TIME_END", horFinacc)
-                            .putString("USR_STATE", estado)
-                            .apply();
-
-                    goModuleActivity();
-                    Toast.makeText(getApplicationContext(), "Bienvenido " + usuario, Toast.LENGTH_SHORT).show();
-
-                } catch (Exception e) {
-                    Log.e(TAG, "onThrowable: " + e.toString(), e);
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UsuarioSistema> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.toString());
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+        login();
     }
 
     private void login() {
-        Call<List<UsuarioSistema>> call = service.login(usuario, contrasen);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Validando Credenciales...");
+        progressDialog.show();
 
-        call.enqueue(new Callback<List<UsuarioSistema>>() {
-            @Override
-            public void onResponse(Call<List<UsuarioSistema>> call, Response<List<UsuarioSistema>> response) {
-                try {
-                    int statusCode = response.code();
-                    Log.e(TAG, "HTTP status code : " + statusCode);
-                    Log.i(TAG, "Response Message : " + response.message());
-
-                    if (response.isSuccessful()) {
-                        /*List<UsuarioSistema> usuarioSistemaList = response.body();
-                        UsuarioSistema usuarioSistema = usuarioSistemaList.get();
-                        String username = usuarioSistema.getUsuario();*/
-
-                        editor
-                                .putString("USR_USER", usuario)
-                                .putString("USR_PASS", contrasen)
-                                .putInt("USR_TYPE", idTipoUsuSist)
-                                .putInt("USR_ID_PERSON", idPersona)
-                                .putString("USR_TYPE_NAME", nameTipoUsuSist)
-                                .putString("USR_DATE_CREATE", fechCreac)
-                                .putString("USR_DATE_START", fecIniciacc)
-                                .putString("USR_TIME_START", horIniciacc)
-                                .putString("USR_DATE_END", fecFinacc)
-                                .putString("USR_TIME_END", horFinacc)
-                                .putString("USR_STATE", estado)
-                                .apply();
-
-                        goModuleActivity();
-                        Toast.makeText(getApplicationContext(), "Bienvenido " + usuario, Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (Exception e) {
-                    Log.e(TAG, "onThrowable: " + e.toString(), e);
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<UsuarioSistema>> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.toString());
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    private void login2() {
-        Call<UsuarioSistema> call = service.login2(usuario, contrasen);
+        Call<UsuarioSistema> call = service.login(username, password);
 
         call.enqueue(new Callback<UsuarioSistema>() {
             @Override
@@ -254,7 +152,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Log.i(TAG, "Response Message : " + response.message());
 
                     if (response.isSuccessful()) {
-                        UsuarioSistema usuarioSistema = response.body();
 
                         idUsusist = response.body().getIdUsusist();
                         idTipoUsuSist = response.body().getIdTipoUsuSist().getIdTipousu();
@@ -266,34 +163,98 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         horIniciacc = response.body().getFechCreac().toString();
                         fecFinacc = response.body().getFecFinacc().toString();
                         horFinacc = response.body().getFechCreac().toString();
+                        estado = response.body().getEstado();
 
-                        editor
-                                .putString("USR_USER", usuario)
-                                .putString("USR_PASS", contrasen)
-                                .putInt("USR_TYPE", idTipoUsuSist)
-                                .putInt("USR_ID_PERSON", idPersona)
-                                .putString("USR_TYPE_NAME", nameTipoUsuSist)
-                                .putString("USR_DATE_CREATE", fechCreac)
-                                .putString("USR_DATE_START", fecIniciacc)
-                                .putString("USR_TIME_START", horIniciacc)
-                                .putString("USR_DATE_END", fecFinacc)
-                                .putString("USR_TIME_END", horFinacc)
-                                .putString("USR_STATE", estado)
-                                .apply();
+                        Log.e(TAG, "USR_USERNAME : " + username);
+                        Log.e(TAG, "USR_PASS : " + password);
+                        Log.e(TAG, "USR_ID : " + idUsusist);
+                        Log.e(TAG, "USR_TYPE : " + idTipoUsuSist);
+                        Log.e(TAG, "USR_TYPE_NAME : " + nameTipoUsuSist);
+                        Log.e(TAG, "USR_ID_PERSON : " + idPersona);
+                        Log.e(TAG, "USR_DATE_CREATE : " + fechCreac);
+                        Log.e(TAG, "USR_DATE_START : " + fecIniciacc);
+                        Log.e(TAG, "USR_TIME_START : " + horIniciacc);
+                        Log.e(TAG, "USR_DATE_END : " + fecFinacc);
+                        Log.e(TAG, "USR_TIME_END : " + horFinacc);
+                        Log.e(TAG, "USR_STATE : " + estado);
 
-                        goModuleActivity();
+                        if (idTipoUsuSist == 5 || idTipoUsuSist == 4) {
+                            progressDialog.dismiss();
+                            goModuleActivity();
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, idTipoUsuSist + " EL USUARIO INGRESADO NO ESTA PERMITIDO.", Toast.LENGTH_LONG).show();
+                            al_edt_user.selectAll();
+                            al_edt_user.requestFocus();
+                            return;
+                        }
                     }
                 } catch (Exception e) {
+                    progressDialog.dismiss();
                     Log.e(TAG, "onThrowable: " + e.toString(), e);
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
+                    al_edt_user.requestFocus();
                 }
             }
 
             @Override
             public void onFailure(Call<UsuarioSistema> call, Throwable t) {
+                progressDialog.dismiss();
                 Log.e(TAG, "onFailure: " + t.toString());
-                //Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), "CREDENCIALES INCORRECTAS", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Fallo en la conexión.", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void showAlertDialogUsers() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View child = LayoutInflater.from(this).inflate(R.layout.item_popup_users, null);
+        builder.setView(child);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+
+        Button ipusrs_btn_01 = alertDialog.findViewById(R.id.ipusrs_btn_01);
+        Button ipusrs_btn_02 = alertDialog.findViewById(R.id.ipusrs_btn_02);
+        Button ipusrs_btn_03 = alertDialog.findViewById(R.id.ipusrs_btn_03);
+        Button ipusrs_btn_04 = alertDialog.findViewById(R.id.ipusrs_btn_04);
+
+        ipusrs_btn_01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setControllers("TCH_01");
+
+                alertDialog.dismiss();
+            }
+        });
+
+        ipusrs_btn_02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setControllers("TCH_02");
+
+                alertDialog.dismiss();
+            }
+        });
+
+        ipusrs_btn_03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setControllers("APO_01");
+
+                alertDialog.dismiss();
+            }
+        });
+
+        ipusrs_btn_04.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setControllers("APO_02");
+
+                alertDialog.dismiss();
             }
         });
     }
@@ -302,7 +263,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
         if (rotation == Surface.ROTATION_90 || rotation == Surface.ROTATION_270) {
             al_layout_main.setOrientation(LinearLayout.HORIZONTAL);
-            //al_layout_main.setBackgroundResource(R.drawable.bg_grad_h);
             al_layout_1.setVisibility(View.GONE);
             al_layout_1_1.setVisibility(View.VISIBLE);
         }
@@ -310,23 +270,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void goModuleActivity() {
         startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class)
-                .putExtra("SEND_CODE", "CODE_LA"));
+                .putExtra("SEND_CODE", "CODE_LA")
+                .putExtra("USR_USERNAME", username)
+                .putExtra("USR_PASS", password)
+                .putExtra("USR_ID", idUsusist)
+                .putExtra("USR_ID_PERSON", idPersona)
+                .putExtra("USR_TYPE_ID", idTipoUsuSist)
+                .putExtra("USR_TYPE_NAME", nameTipoUsuSist)
+                .putExtra("USR_DATE_CREATE", fechCreac)
+                .putExtra("USR_DATE_START", fecIniciacc)
+                .putExtra("USR_TIME_START", horIniciacc)
+                .putExtra("USR_DATE_END", fecFinacc)
+                .putExtra("USR_TIME_END", horFinacc)
+                .putExtra("USR_STATE", estado)
+                .putExtra("BASE_URL", base_url_saved)
+                .putExtra("ASSISTANT_PHONE", phone_saved)
+        );
     }
 
     private void goStartupActivity() {
         startActivity(new Intent(getApplicationContext(), StartupActivity.class));
     }
 
+    private void goSettingsActivity() {
+        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+    }
+
     private void setControllers(String usr) {
-        if (usr.equalsIgnoreCase("USR")) {
-            al_edt_user.setText("drivera_usr");
-            al_edt_pass.setText("usr");
-        } else if (usr.equalsIgnoreCase("USR_2")) {
-            al_edt_user.setText("drivera_usr_2");
-            al_edt_pass.setText("usr_2");
-        } else if (usr.equalsIgnoreCase("TCH")) {
-            al_edt_user.setText("drivera_tch");
-            al_edt_pass.setText("tch");
+        if (usr.equalsIgnoreCase("TCH_01")) {
+            al_edt_user.setText("diegorivera.a04@gmail.com");
+            al_edt_pass.setText("PFRIV70077156");
+        } else if (usr.equalsIgnoreCase("TCH_02")) {
+            al_edt_user.setText("riquelme@gmail.com");
+            al_edt_pass.setText("PFRIQ46548687");
+        } else if (usr.equalsIgnoreCase("APO_01")) {
+            al_edt_user.setText("roxana@gmail.com");
+            al_edt_pass.setText("APRIV76456165");
+        } else if (usr.equalsIgnoreCase("APO_02")) {
+            al_edt_user.setText("denisse@gmail.com");
+            al_edt_pass.setText("APRIV78436514");
         }
     }
 
@@ -341,14 +323,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.al_btn_signin:
                 loginValidate();
                 break;
-            case R.id.al_btn_usr:
-                setControllers("USR");
+            case R.id.al_btn_settings:
+                goSettingsActivity();
                 break;
-            case R.id.al_btn_usr_2:
-                setControllers("USR_2");
-                break;
-            case R.id.al_btn_tch:
-                setControllers("TCH");
+            case R.id.al_btn_usrs:
+                showAlertDialogUsers();
                 break;
         }
     }

@@ -1,10 +1,9 @@
 package com.riveraprojects.ampep.Models;
 
 public class Distrito {
+
     private int idDistrito;
-
     private String descrDistrito;
-
     private Provincia ProvinciaDistrito;
 
     public int getIdDistrito() {
@@ -29,5 +28,14 @@ public class Distrito {
 
     public void setProvinciaDistrito(Provincia provinciaDistrito) {
         ProvinciaDistrito = provinciaDistrito;
+    }
+
+    @Override
+    public String toString() {
+        return "Distrito{" +
+                "idDistrito=" + idDistrito +
+                ", descrDistrito='" + descrDistrito + '\'' +
+                ", ProvinciaDistrito=" + ProvinciaDistrito +
+                '}';
     }
 }

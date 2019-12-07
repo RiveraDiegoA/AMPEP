@@ -1,6 +1,7 @@
 package com.riveraprojects.ampep.Models;
 
 public class Pais {
+
     private int idPais;
 
     private String nomPais;
@@ -29,5 +30,14 @@ public class Pais {
 
     public void setDescripnacionaliPais(String descripnacionaliPais) {
         this.descripnacionaliPais = descripnacionaliPais;
+    }
+
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "idPais=" + idPais +
+                ", nomPais='" + nomPais + '\'' +
+                ", descripnacionaliPais='" + descripnacionaliPais + '\'' +
+                '}';
     }
 }

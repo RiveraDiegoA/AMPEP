@@ -14,13 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.riveraprojects.ampep.Activities.ModulesAreaActivity;
-import com.riveraprojects.ampep.Adapters.AdvertismentAdapter;
 import com.riveraprojects.ampep.Adapters.AnuncioAdapter;
 import com.riveraprojects.ampep.Models.Advertisement;
 import com.riveraprojects.ampep.Models.Anuncio;
 import com.riveraprojects.ampep.R;
 import com.riveraprojects.ampep.Service.ApiService;
-import com.riveraprojects.ampep.Service.ApiServiceGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +26,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class M3ListActivity extends AppCompatActivity {
 
@@ -37,9 +37,8 @@ public class M3ListActivity extends AppCompatActivity {
 
     private static final String TAG = M3ListActivity.class.getSimpleName();
 
-    private SharedPreferences sharedPreferences;
-    private String user, pass;
-    private int user_id, charge, type, grade;
+    private String base_url_saved, phone_saved, user, pass;
+    private int user_id, grade, idUsusist, idTipoUsuSist;
 
     private ApiService service;
 
@@ -49,25 +48,17 @@ public class M3ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_m3_list);
 
         init();
-        uploadPreferences();
-        uploadSettings();
+        getIntentData();
         //initData();
         //listAnuncios();
 
-        if (type == 4) {
+        /*if (type == 4) {
             listAnunciosGrado();
         } else if (type == 5) {
             listAnuncios();
-        }
+        }*/
+        listAnuncios();
         customOrientation();
-    }
-
-    private void uploadSettings() {
-        service = ApiServiceGenerator.createService(ApiService.class);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        //recyclerView.setAdapter(new AdvertismentAdapter(this, advertisementList));
-        recyclerView.setAdapter(new AnuncioAdapter(this));
     }
 
     private void init() {
@@ -75,51 +66,28 @@ public class M3ListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.am3l_recyclerview);
     }
 
-    private void uploadPreferences() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        user_id = sharedPreferences.getInt("USR_USER_ID", 0);
-        user = sharedPreferences.getString("USR_USER", null);
-        pass = sharedPreferences.getString("USR_PASS", null);
-        charge = sharedPreferences.getInt("CHARGE", 0);
-        type = sharedPreferences.getInt("USR_TYPE", 0);
+    private void getIntentData() {
+        Intent intent = getIntent();
+        idUsusist = intent.getIntExtra("USR_ID", 0);
+        idTipoUsuSist = intent.getIntExtra("USR_TYPE_ID", 0);
+        base_url_saved = intent.getStringExtra("BASE_URL");
+        phone_saved = intent.getStringExtra("ASSISTANT_PHONE");
+        Log.d(TAG, "ASSISTANT_PHONE: " + phone_saved);
+        Log.d(TAG, "URL_BASE: " + base_url_saved);
+
+        uploadSettings(base_url_saved);
     }
 
-    private void initData() {
-        advertisementList = new ArrayList<>();
-        advertisementList.add(new Advertisement("ANUNCIO 01", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 02", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 03", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 04", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+    private void uploadSettings(String base_url) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(base_url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        advertisementList.add(new Advertisement("ANUNCIO 05", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 06", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 07", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 08", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
+        service = retrofit.create(ApiService.class);
 
-        advertisementList.add(new Advertisement("ANUNCIO 10", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 11", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 12", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        /*advertisementList.add(new Advertisement("ANUNCIO 13", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
-
-        advertisementList.add(new Advertisement("ANUNCIO 14", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 15", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 16", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 17", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
-
-        advertisementList.add(new Advertisement("ANUNCIO 18", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 19", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 20", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 21", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
-
-        advertisementList.add(new Advertisement("ANUNCIO 22", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 23", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 24", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 25", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));
-
-        advertisementList.add(new Advertisement("ANUNCIO 26", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "20/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 27", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "22/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 28", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "24/10/2019"));
-        advertisementList.add(new Advertisement("ANUNCIO 29", getString(R.string.text_desc), "Rivera Ambrosio Jean Diego", "26/10/2019"));*/
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(new AnuncioAdapter(this));
     }
 
     private void customOrientation() {
@@ -131,12 +99,22 @@ public class M3ListActivity extends AppCompatActivity {
 
     private void goModulesAreaActivity() {
         startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class)
-                .putExtra("SEND_CODE", "CODE_M3LA"));
+                .putExtra("USR_ID", user_id)
+                .putExtra("SEND_CODE", "CODE_M3LA")
+                .putExtra("BASE_URL", base_url_saved)
+                .putExtra("ASSISTANT_PHONE", phone_saved)
+                .putExtra("USR_TYPE_ID", idTipoUsuSist)
+        );
     }
 
     private void goM3OptionsActivity() {
         startActivity(new Intent(getApplicationContext(), M3OptionsActivity.class)
-                .putExtra("SEND_CODE", "CODE_M3LA"));
+                .putExtra("SEND_CODE", "CODE_M3LA")
+                .putExtra("USR_ID", user_id)
+                .putExtra("BASE_URL", base_url_saved)
+                .putExtra("ASSISTANT_PHONE", phone_saved)
+                .putExtra("USR_TYPE_ID", idTipoUsuSist)
+        );
     }
 
     public void listAnuncios() {
@@ -288,9 +266,9 @@ public class M3ListActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (type == 4) {
+        if (idTipoUsuSist == 4) {
             goModulesAreaActivity();
-        } else if (type == 5) {
+        } else if (idTipoUsuSist == 5) {
             goM3OptionsActivity();
         }
     }

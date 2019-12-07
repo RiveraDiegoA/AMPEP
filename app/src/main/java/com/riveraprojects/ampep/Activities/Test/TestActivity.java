@@ -1,6 +1,8 @@
 package com.riveraprojects.ampep.Activities.Test;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,34 +14,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.riveraprojects.ampep.Adapters.PersonAdapter;
 import com.riveraprojects.ampep.Adapters.UsuarioSistemaAdapter;
-import com.riveraprojects.ampep.Models.Person;
 import com.riveraprojects.ampep.Models.UsuarioSistema;
 import com.riveraprojects.ampep.R;
 import com.riveraprojects.ampep.Service.ApiService;
-import com.riveraprojects.ampep.Service.ApiServiceGenerator;
-import com.riveraprojects.ampep.Utils.Apis;
-import com.riveraprojects.ampep.Utils.PersonService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ListView listView;
     private Button button;
 
-    private PersonService personService;
-    private List<Person> personList = new ArrayList<>();
-
-    private ApiService service;
     private RecyclerView recyclerView;
     private TextView textView;
+
+    private SharedPreferences sharedPreferences;
+    private String sp_base_url_saved;
+
+    private ApiService service;
 
     private static String TAG = TestActivity.class.getSimpleName();
 
@@ -49,6 +48,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_test);
 
         init();
+        uploadPreferences();
         uploadSettigs();
     }
 
@@ -60,34 +60,24 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         button.setOnClickListener(this);
     }
 
+    private void uploadPreferences() {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        sp_base_url_saved = sharedPreferences.getString("BASE_URL", null);
+    }
+
     private void uploadSettigs() {
-        personService = Apis.getPersonService();
-        service = ApiServiceGenerator.createService(ApiService.class);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(sp_base_url_saved)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        service = retrofit.create(ApiService.class);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new UsuarioSistemaAdapter(this));
     }
 
-    public void listPersons() {
-        Call<List<Person>> call = personService.getPersons();
-        call.enqueue(new Callback<List<Person>>() {
-            @Override
-            public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
-                if (response.isSuccessful()) {
-                    personList = response.body();
-                    listView.setAdapter(new PersonAdapter(TestActivity.this, R.layout.item_list, personList));
-                } else {
-                    Toast.makeText(TestActivity.this, "ERROR AL OBTENER DATOS", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Person>> call, Throwable t) {
-                Toast.makeText(TestActivity.this, "ERROR EN LA CONEXIÓN", Toast.LENGTH_SHORT).show();
-                Log.e(TAG, t.getMessage());
-            }
-        });
-    }
 
     public void listUsuariosSistema() {
         Call<List<UsuarioSistema>> call = service.getUsuariosSistema();

@@ -3,14 +3,11 @@ package com.riveraprojects.ampep.Models;
 import java.util.Date;
 
 public class Ugel {
+
     private int idUgel;
-
     private String idUnicUgel;
-
     private String descrUgel;
-
     private String estadoUgel;
-
     private Date fecRegUgel;
 
     public int getIdUgel() {
@@ -51,5 +48,16 @@ public class Ugel {
 
     public void setFecRegUgel(Date fecRegUgel) {
         this.fecRegUgel = fecRegUgel;
+    }
+
+    @Override
+    public String toString() {
+        return "Ugel{" +
+                "idUgel=" + idUgel +
+                ", idUnicUgel='" + idUnicUgel + '\'' +
+                ", descrUgel='" + descrUgel + '\'' +
+                ", estadoUgel='" + estadoUgel + '\'' +
+                ", fecRegUgel=" + fecRegUgel +
+                '}';
     }
 }

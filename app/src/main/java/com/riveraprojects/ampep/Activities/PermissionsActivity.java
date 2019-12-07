@@ -30,7 +30,8 @@ public class PermissionsActivity extends AppCompatActivity implements View.OnCli
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.CAMERA,*/
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CALL_PHONE
     };
 
     private LinearLayout ap_layout_main, ap_layout_1, ap_layout_2;
@@ -79,8 +80,10 @@ public class PermissionsActivity extends AppCompatActivity implements View.OnCli
                         return;
                     }
                 }
+
                 Toast.makeText(this, "Permisos concedidos", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
+                goSettingsActivity();
             }
         }
     }
@@ -98,6 +101,10 @@ public class PermissionsActivity extends AppCompatActivity implements View.OnCli
 
     private void goStartupActivity() {
         startActivity(new Intent(getApplicationContext(), StartupActivity.class));
+    }
+
+    private void goSettingsActivity() {
+        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
     }
 
     @Override

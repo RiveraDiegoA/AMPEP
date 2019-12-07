@@ -7,13 +7,18 @@
     <color name="colorPrimaryDark">#3E5151</color>
     <color name="colorAccent">#3E5151</color>-->
 
-    <color name="colorPrimary">#EAECC6</color>
+    <!--<color name="colorPrimary">#EAECC6</color>
     <color name="colorPrimaryDark">#2193b0</color>
-    <color name="colorAccent">#2193b0</color>
+    <color name="colorAccent">#2193b0</color>-->
+
+    <color name="colorPrimary">#DADBD4</color>
+    <color name="colorPrimaryDark">#2AB4D8</color>
+    <color name="colorAccent">#2AB4D8</color>
 
     <color name="colorWhite">#fff</color>
     <color name="colorGrey">#bdc3c7</color>
     <color name="colorGrey_light">#D5DDDF</color>
+    <color name="colorGrey_light_02">#E4EAEC</color>
     <color name="colorGreyDark">#3C3B3F</color>
     <color name="colorGrade">#2c3e50</color>
 

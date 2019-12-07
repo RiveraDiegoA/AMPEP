@@ -1,19 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_grad_v"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".Activities.Modules.Module_01.M1AppointmentActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EN CONSTRUCCÍON M1"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="7dp"
+        android:background="@drawable/header_outl_grad_v_p_pd"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_books_w"
+            android:drawableRight="@drawable/ic_books_w"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:text="CITAS"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="4dp"
+        app:cardCornerRadius="15dp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:id="@+id/ipw_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="40dp"
+                    android:drawableBottom="@drawable/ic_arrow_down_w"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorGrey"
+                    android:maxLines="8"
+                    android:text="@string/desc_module_01"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/am1a_btn_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="7dp"
+                    android:background="@drawable/btn_outl_grad_pd_p"
+                    android:drawableLeft="@drawable/ic_call_w"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:elevation="4dp"
+                    android:paddingHorizontal="30dp"
+                    android:text="LLAMAR"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/am1a_btn_close"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_margin="7dp"
+                android:background="@drawable/btn_circle_outl_grad_p_pd"
+                android:elevation="4dp"
+                android:src="@drawable/ic_close_w"
+                android:tint="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

@@ -4,26 +4,31 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.bestsoft32.tt_fancy_gif_dialog_lib.TTFancyGifDialog;
 import com.riveraprojects.ampep.Activities.ModulesAreaActivity;
 import com.riveraprojects.ampep.R;
 import com.shuhart.stepview.StepView;
 
 public class M2ProcessActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private int currentStep = 0;
+    private int currentStep, user_id, idTipoUsuSist;
     private StepView stepView;
     private LinearLayout layout_main;
     private CardView cardView_01, cardView_02, cardView_03, cardView_04;
     private Button btn_c1_01, btn_c1_02, btn_c2_01, btn_c2_02, btn_c3_01, btn_c3_02, btn_c4_01, btn_c4_02;
+
+    private String base_url_saved, phone_saved;
+
+    private static String TAG = M2ProcessActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,7 @@ public class M2ProcessActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_m2_process);
 
         init();
+        getIntentData();
         uploadSettingsStepview();
     }
 
@@ -57,6 +63,16 @@ public class M2ProcessActivity extends AppCompatActivity implements View.OnClick
         btn_c3_02.setOnClickListener(this);
         btn_c4_01.setOnClickListener(this);
         btn_c4_02.setOnClickListener(this);
+    }
+
+    private void getIntentData() {
+        Intent intent = getIntent();
+        user_id = intent.getIntExtra("USR_ID", 0);
+        idTipoUsuSist = intent.getIntExtra("USR_TYPE_ID", 0);
+        base_url_saved = intent.getStringExtra("BASE_URL");
+        phone_saved = intent.getStringExtra("ASSISTANT_PHONE");
+        Log.d(TAG, "ASSISTANT_PHONE: " + phone_saved);
+        Log.d(TAG, "URL_BASE: " + base_url_saved);
     }
 
     private void uploadSettingsStepview() {
@@ -87,28 +103,22 @@ public class M2ProcessActivity extends AppCompatActivity implements View.OnClick
             cardView_02.setVisibility(View.GONE);
             cardView_03.setVisibility(View.GONE);
             cardView_04.setVisibility(View.VISIBLE);
-            showDialogCongratulation();
+            showSuccsessDialog();
         }
     }
 
     private void goModulesAreaActivity() {
         startActivity(new Intent(getApplicationContext(), ModulesAreaActivity.class)
-                .putExtra("SEND_CODE", "CODE_M2PA"));
+                .putExtra("SEND_CODE", "CODE_M2PA")
+                .putExtra("USR_ID", user_id)
+                .putExtra("USR_TYPE_ID", idTipoUsuSist)
+                .putExtra("BASE_URL", base_url_saved)
+                .putExtra("ASSISTANT_PHONE", phone_saved)
+        );
     }
 
     private void sendtoRepository(String web) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(web)));
-    }
-
-    private void showDialogCongratulation() {
-        new TTFancyGifDialog.Builder(this)
-                .setTitle("FELICITACIONES")
-                .setMessage("En hora buena!. Ha consolidado su matrícula. Presione el botón 'VER RESULTADO' para ver infomación detallada de la matrícula.")
-                .setPositiveBtnText("Entendido")
-                .setPositiveBtnBackground("#2193b0")
-                .setGifResource(R.drawable.img_ampep_black)      //pass your gif, png or jpg
-                .isCancellable(true)
-                .build();
     }
 
     private void showDialogCita() {
@@ -125,6 +135,38 @@ public class M2ProcessActivity extends AppCompatActivity implements View.OnClick
         btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+    }
+
+    private void showSuccsessDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View child = LayoutInflater.from(this).inflate(R.layout.item_popup_welcome, null);
+        builder.setView(child);
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
+        alertDialog.show();
+
+        LinearLayout layout_01 = alertDialog.findViewById(R.id.ipw_layout_01);
+        LinearLayout layout_03 = alertDialog.findViewById(R.id.ipw_layout_03);
+        TextView ipw_title = alertDialog.findViewById(R.id.ipw_title);
+        TextView ipw_name = alertDialog.findViewById(R.id.ipw_name);
+        TextView ipw_desc = alertDialog.findViewById(R.id.ipw_desc);
+        Button ipw_btn_03 = alertDialog.findViewById(R.id.ipw_btn_03);
+
+        layout_01.setVisibility(View.GONE);
+        layout_03.setVisibility(View.VISIBLE);
+        ipw_name.setVisibility(View.INVISIBLE);
+        ipw_title.setText("!Felicitaciones!");
+        ipw_desc.setText("En hora buena, logro consolidar la solicitud de matricula.");
+
+        ipw_btn_03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 alertDialog.dismiss();
             }
         });

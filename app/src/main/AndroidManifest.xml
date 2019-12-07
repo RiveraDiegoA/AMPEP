@@ -10,6 +10,7 @@
     -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.Test.TestActivity"></activity>
+        <activity android:name=".Activities.SettingsActivity"></activity>
+        <activity android:name=".Activities.Test.TestActivity" />
         <activity android:name=".Activities.Modules.Module_03.M3RegistrerActivity" />
         <activity android:name=".Activities.Modules.Module_03.M3ListActivity" />
         <activity android:name=".Activities.Modules.Module_03.M3OptionsActivity" />

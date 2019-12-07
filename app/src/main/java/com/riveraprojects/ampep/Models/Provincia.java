@@ -1,33 +1,41 @@
 package com.riveraprojects.ampep.Models;
 
 public class Provincia {
-    private int idProvincia;
 
-    private String nomProvincia;
+    private int idDepartamento;
+    private String nomDepartamento;
+    private Pais PaisDepartamento;
 
-    private Departamento DepartamentoProvincia;
-
-    public int getIdProvincia() {
-        return idProvincia;
+    public int getIdDepartamento() {
+        return idDepartamento;
     }
 
-    public void setIdProvincia(int idProvincia) {
-        this.idProvincia = idProvincia;
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
-    public String getNomProvincia() {
-        return nomProvincia;
+    public String getNomDepartamento() {
+        return nomDepartamento;
     }
 
-    public void setNomProvincia(String nomProvincia) {
-        this.nomProvincia = nomProvincia;
+    public void setNomDepartamento(String nomDepartamento) {
+        this.nomDepartamento = nomDepartamento;
     }
 
-    public Departamento getDepartamentoProvincia() {
-        return DepartamentoProvincia;
+    public Pais getPaisDepartamento() {
+        return PaisDepartamento;
     }
 
-    public void setDepartamentoProvincia(Departamento departamentoProvincia) {
-        DepartamentoProvincia = departamentoProvincia;
+    public void setPaisDepartamento(Pais paisDepartamento) {
+        PaisDepartamento = paisDepartamento;
+    }
+
+    @Override
+    public String toString() {
+        return "Provincia{" +
+                "idDepartamento=" + idDepartamento +
+                ", nomDepartamento='" + nomDepartamento + '\'' +
+                ", PaisDepartamento=" + PaisDepartamento +
+                '}';
     }
 }

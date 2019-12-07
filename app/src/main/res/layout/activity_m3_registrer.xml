@@ -25,7 +25,7 @@
             android:drawablePadding="10dp"
             android:drawableTint="@color/colorPrimaryDark"
             android:gravity="center_vertical"
-            android:text="LISTA DE ANUNCIOS"
+            android:text="REGISTRO DE ANUNCIOS"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="13sp"
             android:textStyle="bold" />
@@ -58,40 +58,67 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="7dp"
-                        android:background="@drawable/spinner_outline_grey"
                         android:orientation="vertical">
 
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/am3r_spinner_01"
+                        <TextView
+                            android:id="@+id/am3r_title_01"
                             android:layout_width="match_parent"
-                            android:layout_height="43dp" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:paddingHorizontal="10dp"
+                            android:text="Seleccionar colegio:"
+                            android:textColor="@color/colorGrey"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/spinner_outline_grey"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/am3r_spinner_01"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:textSize="13sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="7dp"
-                        android:background="@drawable/spinner_outline_grey"
                         android:orientation="vertical">
 
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/am3r_spinner_02"
+                        <TextView
+                            android:id="@+id/am3r_title_02"
                             android:layout_width="match_parent"
-                            android:layout_height="43dp" />
-                    </LinearLayout>
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="2dp"
+                            android:paddingHorizontal="10dp"
+                            android:text="Seleccionar grado:"
+                            android:textColor="@color/colorGrey"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="7dp"
-                        android:background="@drawable/spinner_outline_grey"
-                        android:orientation="vertical">
-
-                        <androidx.appcompat.widget.AppCompatSpinner
-                            android:id="@+id/am3r_spinner_03"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="43dp" />
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:background="@drawable/spinner_outline_grey"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/am3r_spinner_02"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:textSize="13sp" />
+                        </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
@@ -179,6 +206,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="43dp"
                             android:hint="Título"
+                            android:maxLength="120"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="13sp" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -196,6 +224,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Descripción"
+                            android:maxLength="200"
                             android:inputType="textMultiLine"
                             android:minHeight="120dp"
                             android:textColor="@color/colorPrimaryDark"

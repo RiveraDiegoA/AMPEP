@@ -3,19 +3,14 @@ package com.riveraprojects.ampep.Models;
 import java.util.Date;
 
 public class GradoEscolar {
+
     private int idGrado;
-
     private Date fecregistroApoderado;
-
     private String estadoApoderado;
-
     private String nivelGradoEscolar;
-
     private String descripcionGradoEscolar;
-
     private AnioEscolar anioEscolarGrado;
-
-    //private Colegio colegioGradoEscolar;
+    private Colegio colegioGradoEscolar;
 
     public int getIdGrado() {
         return idGrado;
@@ -65,11 +60,24 @@ public class GradoEscolar {
         this.anioEscolarGrado = anioEscolarGrado;
     }
 
-    /*public Colegio getColegioGradoEscolar() {
+    public Colegio getColegioGradoEscolar() {
         return colegioGradoEscolar;
     }
 
     public void setColegioGradoEscolar(Colegio colegioGradoEscolar) {
         this.colegioGradoEscolar = colegioGradoEscolar;
-    }*/
+    }
+
+    @Override
+    public String toString() {
+        return "GradoEscolar{" +
+                "idGrado=" + idGrado +
+                ", fecregistroApoderado=" + fecregistroApoderado +
+                ", estadoApoderado='" + estadoApoderado + '\'' +
+                ", nivelGradoEscolar='" + nivelGradoEscolar + '\'' +
+                ", descripcionGradoEscolar='" + descripcionGradoEscolar + '\'' +
+                ", anioEscolarGrado=" + anioEscolarGrado +
+                ", colegioGradoEscolar=" + colegioGradoEscolar +
+                '}';
+    }
 }

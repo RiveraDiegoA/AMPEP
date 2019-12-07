@@ -76,9 +76,10 @@
             android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_account_circle_w"
             android:drawablePadding="5dp"
-            android:drawableTint="@color/colorGrey"
+            android:drawableTint="@color/colorPrimaryDark"
             android:gravity="center_vertical"
             android:text="Rivera Ambrosio Jean Diego"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="13sp" />
 
         <TextView
@@ -89,6 +90,7 @@
             android:gravity="right"
             android:text="26/10/2019"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
